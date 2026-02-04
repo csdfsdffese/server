@@ -51,7 +51,6 @@ show_menu() {
 
 # ===== 主逻辑 =====
 main() {
-    check_root
     while true; do
         show_menu
         read -p "选择 [0-8]: " choice
