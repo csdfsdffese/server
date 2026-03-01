@@ -1,6 +1,5 @@
 #!/bin/bash
 
-# 颜色
 RED='\033[0;31m'
 GREEN='\033[0;32m'
 YELLOW='\033[0;33m'
@@ -11,8 +10,6 @@ soga_setup() {
     read -p "授权码: " soga_key
     read -p "域名: " webapi_domain
     read -p "webapi_key: " webapi_key
-    read -p "redis地址: " redis_addr
-    read -p "redis密码: " redis_password
     bash <(curl -Ls https://raw.githubusercontent.com/vaxilu/soga/master/install.sh) || return 1
     cat > /etc/soga/soga.conf <<EOF
 type=xboard
@@ -33,7 +30,7 @@ forbidden_bit_torrent=true
 log_level=info
 auto_update=true
 force_close_ssl=true
-block_list_url=https://h5ai.huanying706.com/soga/blockList
+block_list_url=https://raw.githubusercontent.com/csdfsdffese/server/main/blockList
 EOF
     soga restart
 }
@@ -44,7 +41,6 @@ show_menu() {
     echo "0. 退出"
 }
 
-# ===== 主逻辑 =====
 main() {
     while true; do
         show_menu
